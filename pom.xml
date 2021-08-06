@@ -10,7 +10,7 @@
 
     <groupId>com.facebook.presto.hive</groupId>
     <artifactId>hive-apache</artifactId>
-    <version>3.0.0-6-SNAPSHOT</version>
+    <version>3.0.0-5</version>
 
     <name>hive-apache</name>
     <description>Shaded version of Apache Hive for Presto</description>
@@ -86,11 +86,23 @@
             <version>1.7</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
         <!-- hive -->
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-standalone-metastore</artifactId>
-            <version>${dep.hive.version}</version>
+            <version>3.0.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.hive</groupId>
@@ -190,8 +202,16 @@
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-serde</artifactId>
-            <version>${dep.hive.version}</version>
+            <version>2.3.9</version>
             <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.hive</groupId>
+                    <artifactId>hive-shims</artifactId>
+                </exclusion>
                 <exclusion>
                     <groupId>org.apache.hive</groupId>
                     <artifactId>hive-service-rpc</artifactId>
@@ -245,6 +265,11 @@
             <version>${dep.hive.version}</version>
             <classifier>core</classifier>
             <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+
                 <exclusion>
                     <groupId>org.apache.hive</groupId>
                     <artifactId>hive-ant</artifactId>
